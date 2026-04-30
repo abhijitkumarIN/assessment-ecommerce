@@ -18,3 +18,17 @@ export interface Product {
   }
   images: string[]
 }
+export interface ProductCardProp {
+  product: {
+    id: number
+    title: string
+    slug: string
+    price: number
+    description: string
+    category: {
+      name: string
+      slug: string
+    }
+    images: string[]
+  }
+}
