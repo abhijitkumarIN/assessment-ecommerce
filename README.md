@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+# Tech Stack Used
+
+1. **UI Micro-Framework**  
+   **shadcn/ui** - built on top of **Radix UI**.  
+   Uses:
+   - lucide-react (icons)
+   - clsx, tailwind-merge (utility helpers)
+   - tw-animate-css (animations)
+   - vaul (drawer components for sidebar)
+
+2. **Styling**  
+   **Tailwind CSS**
+
+3. **UI Development Optimization**  
+   JSX only ui components copy paste and modification for header and footer from **Flowbite** are used to speed up UI development.
