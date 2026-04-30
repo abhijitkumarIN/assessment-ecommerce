@@ -6,10 +6,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { BasketIcon } from '../../icons'
+import { useState, useEffect } from 'react'
 
 export default function Minicart() {
     const dispatch = useAppDispatch()
     const cart = useAppSelector((state) => state.cart)
+    const [isOpen, setIsOpen] = useState(false)
 
     const totalPrice = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
     const totalItems = cart.items.reduce((sum, item) => sum + item.quantity, 0)
@@ -23,10 +25,26 @@ export default function Minicart() {
         dispatch(removeFromCart(id))
     }
 
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            const target = event.target as HTMLElement
+            if (!event.target || !(target.closest('.minicart-container'))) {
+                setIsOpen(false)
+            }
+        }
+        if (isOpen) {
+            setTimeout(() => {
+                document.addEventListener('click', handleClickOutside)
+            }, 0)
+        }
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+    }, [isOpen])
 
     if (totalItems === 0) {
         return (
-            <div className="relative  cursor-pointer">
+            <div className="relative cursor-pointer">
                 <BasketIcon />
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     0
@@ -35,21 +53,20 @@ export default function Minicart() {
         )
     }
 
-    return (
-        <div className="relative group">
-            <div className="relative cursor-pointer">
+        return (
+        <div className="relative group minicart-container">
+            <div className="relative cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
                 <BasketIcon />
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {totalItems}
                 </span>
             </div>
 
-            <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-96 overflow-y-auto">
+            <div className={`absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-50 max-h-96 overflow-y-auto transition-all duration-200 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                 <div className="p-4 border-b border-gray-200">
                     <h3 className="font-semibold text-gray-900">Shopping Cart ({totalItems} items)</h3>
                 </div>
-                <ScrollArea className="h-52 px-1 w-full ">
-                    {cart?.items?.map((item) => (
+                <ScrollArea className="h-52 px-1 w-full ">                    {cart?.items?.map((item) => (
                         <div key={item.id} className="p-4 border-b border-gray-100 hover:bg-gray-50">
                             <div className="flex gap-3">
                                 <Link href={`/product/${item?.id}`}>
