@@ -62,7 +62,7 @@ export default function Minicart() {
                 </span>
             </div>
 
-            <div className={`absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-50 max-h-96 overflow-y-auto transition-all duration-200 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+            <div className={`absolute lg:right-0 md:right-0 -right-10 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-50 max-h-96 overflow-y-auto transition-all duration-200 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                 <div className="p-4 border-b border-gray-200">
                     <h3 className="font-semibold text-gray-900">Shopping Cart ({totalItems} items)</h3>
                 </div>
