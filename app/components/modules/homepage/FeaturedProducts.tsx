@@ -93,7 +93,7 @@ export default function FeaturedProducts(): JSX.Element {
         <div className="mt-12 text-center">
           <Link
             href="/catalog"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all "
           >
             Shop All Products
             <ArrowIcon />

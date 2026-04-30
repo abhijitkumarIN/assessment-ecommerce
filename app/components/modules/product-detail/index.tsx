@@ -65,7 +65,7 @@ export default function ProductPage({ productDetail }: ProductPageProps) {
                                     <button
                                         key={index}
                                         onClick={() => setSelectedImage(index)}
-                                        className={`relative aspect-square rounded-lg overflow-hidden bg-gray-100 border-2 transition-all ${selectedImage === index
+                                        className={`relative cursor-pointer aspect-square rounded-lg overflow-hidden bg-gray-100 border-2 transition-all ${selectedImage === index
                                             ? 'border-blue-500 ring-2 ring-blue-200'
                                             : 'border-transparent hover:border-gray-300'
                                             }`}
@@ -119,17 +119,17 @@ export default function ProductPage({ productDetail }: ProductPageProps) {
                         <div className="mt-auto space-y-6">
                             <div className="flex items-center gap-4">
                                 <span className="text-gray-700 font-medium">Quantity:</span>
-                                <div className="flex items-center border border-gray-300 rounded-lg">
+                                <div className="flex overflow-hidden items-center border border-gray-300 rounded-lg">
                                     <button
                                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                        className="px-4 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
+                                        className="px-4 cursor-pointer py-2 overflow-hidden text-gray-600 hover:bg-gray-100 transition-colors"
                                     >
                                         -
                                     </button>
                                     <span className="px-4 py-2 font-medium">{quantity}</span>
                                     <button
                                         onClick={() => setQuantity(quantity + 1)}
-                                        className="px-4 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
+                                        className="px-4 py-2 cursor-pointer overflow-hidden text-gray-600 hover:bg-gray-100 transition-colors"
                                     >
                                         +
                                     </button>

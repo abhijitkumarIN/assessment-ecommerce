@@ -45,7 +45,7 @@ export default function Testimonials(): JSX.Element {
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100">
+            <div key={testimonial.id} className="bg-gray-50 rounded-2xl p-6  transition-all duration-300 border-2 border-gray-100">
               <div className="flex items-start space-x-4">
                 <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
                   <img

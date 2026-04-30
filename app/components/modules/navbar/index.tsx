@@ -1,24 +1,27 @@
-import { JSX, useState } from "react";
-import { BagIcon, ProfileIcon, WishListIcon } from "../../icons";
+import { JSX } from "react";
+import { ProfileIcon } from "../../icons";
 import Link from "next/link";
 import Minicart from "./Minicart";
+import { CATEGORIES } from "@/app/constants";
+import Image from "next/image";
+import Sidebar from "./Sidebar";
 
 export default function Navbar(): JSX.Element {
     return (
         <nav className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
             <div className="bg-blue-600 text-white text-xs text-center py-1.5 hidden lg:block">
-                <p>Free shipping on orders over $50 • Limited Time Offer: 20% off selected items</p>
+                <p>Free shipping on orders over $50 - Limited Time Offer 20% off selected items</p>
             </div>
             <div className="max-w-7xl px-4 mx-auto xl:px-0">
                 <div className="flex items-center justify-between py-3">
-
+                    <div className="lg:hidden md:inline inline"><Sidebar /></div>
                     <div className="flex items-center gap-2">
-                        <a href="/" className="flex items-center gap-2 shrink-0">
-                            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20">
-                                <BagIcon />
+                        <Link href="/" className="flex items-center gap-2 shrink-0">
+                            <div className="relative rounded-full overflow-hidden w-10 cursor-pointer h-10 bg-gradient-to-br from-blue-600 to-blue-500  flex items-center justify-center ">
+                                <Image fill src="/image.png" alt="logo" />
                             </div>
                             <span className="text-xl font-bold text-gray-900 tracking-tight">Sembark<span className="text-blue-600">Shop</span></span>
-                        </a>
+                        </Link>
                     </div>
                     <div className="hidden md:block flex-1 max-w-xl mx-8">
                         <div className="relative">
@@ -33,13 +36,13 @@ export default function Navbar(): JSX.Element {
                     <div className="flex items-center gap-1 sm:gap-2">
                         <button
                             type="button"
-                            className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-colors"
+                            className="hidden cursor-pointer sm:flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-black  rounded-xl transition-colors"
                         >
                             <ProfileIcon />
                             <span className="hidden lg:inline">Account</span>
                         </button>
 
-                    
+
 
                         <div className="relative">
                             <Minicart />
@@ -47,14 +50,14 @@ export default function Navbar(): JSX.Element {
 
                         <button
                             type="button"
-                            className="md:hidden flex items-center justify-center p-2 text-gray-600 hover:bg-gray-50 rounded-xl transition-colors"
+                            className="md:hidden flex items-center justify-center p-2 text-black rounded-xl transition-colors"
                         >
                             <ProfileIcon />
                         </button>
                     </div>
                 </div>
                 <div className="hidden lg:flex items-center gap-1 pb-3 overflow-x-auto">
-                    {["All", "Electronics", "Clothing", "Home & Kitchen", "Sports", "Books", "Beauty", "Toys"].map((cat) => (
+                    {CATEGORIES.map((cat) => (
                         <Link
                             key={cat}
                             href="/catalog"

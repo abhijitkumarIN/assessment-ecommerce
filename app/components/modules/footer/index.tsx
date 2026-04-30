@@ -1,6 +1,7 @@
 import React, { JSX } from "react";
 import Link from "next/link";
 import { BagIcon, FacebookIcon, InstagramIcon } from "../../icons";
+import Image from "next/image";
 export default function Footer(): JSX.Element {
   return (
     <footer className="bg-gray-900 text-gray-300">
@@ -8,8 +9,8 @@ export default function Footer(): JSX.Element {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center">
-                <BagIcon />
+              <div className="relative overflow-hidden rounded-full w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500  flex items-center justify-center">
+                <Image  fill src="/image.png" alt="logo" />
               </div>
               <span className="text-xl font-bold text-white tracking-tight">Sembark<span className="text-blue-400">Shop</span></span>
             </Link>
@@ -65,7 +66,7 @@ export default function Footer(): JSX.Element {
               placeholder="Your email address"
               className="flex-1 md:w-64 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm"
             />
-            <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-sm">
+            <button className="px-6 cursor-pointer py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-sm">
               Subscribe
             </button>
           </div>

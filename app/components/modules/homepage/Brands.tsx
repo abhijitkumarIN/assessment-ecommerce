@@ -31,7 +31,7 @@ export default function Brands(): JSX.Element {
             <Link
               key={brand.name}
               href={brand.url}
-              className="flex items-center justify-center bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="flex items-center justify-center bg-white rounded-2xl p-6  transition-all duration-300 border-2 border-gray-100"
             >
               <span className="text-2xl font-bold text-gray-600">{brand.name}</span>
             </Link>

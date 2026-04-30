@@ -38,7 +38,7 @@ export default function Minicart() {
     return (
         <div className="relative group">
             <div className="relative cursor-pointer">
-             <BasketIcon/>
+                <BasketIcon />
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {totalItems}
                 </span>
@@ -52,16 +52,21 @@ export default function Minicart() {
                     {cart?.items?.map((item) => (
                         <div key={item.id} className="p-4 border-b border-gray-100 hover:bg-gray-50">
                             <div className="flex gap-3">
-                                <div className="relative w-16 h-16 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.title}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
+                                <Link href={`/product/${item?.id}`}>
+
+                                    <div className="relative w-16 h-16 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                </Link>
                                 <div className="flex-1 min-w-0">
-                                    <h4 className="text-sm font-medium text-gray-900 max-w-44">{item.title}</h4>
+                                    <Link href={`/product/${item?.id}`}>
+                                        <h4 className="text-sm font-medium text-gray-900 max-w-44">{item.title}</h4>
+                                    </Link>
                                     <p className="text-xs text-gray-500 mt-0.5">{item.categoryName}</p>
                                     <p className="text-sm font-semibold text-gray-900 mt-1">${item.price.toFixed(2)}</p>
                                     <div className="flex items-center gap-2 mt-2">
@@ -88,6 +93,7 @@ export default function Minicart() {
                                 </div>
                             </div>
                         </div>
+
                     ))}
                 </ScrollArea>
                 <div className="p-4 border-t border-gray-200 bg-gray-50">

@@ -4,7 +4,7 @@ import ProductCard from "../components/modules/catalog/ProductCard"
 import FilterSidebar from "../components/modules/catalog/FilterSidebar"
 import { useFetchProducts } from "../hooks"
 import useFetch from "../hooks"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Suspense } from "react"
 import useDebounce from "../hooks/useDebounce"
 import { ITEMS_PER_PAGE } from "@/app/constants"
 import { Category, Product } from "@/app/interfaces"
@@ -12,7 +12,7 @@ import { ProductCardPlaceholder, ProductPlaceHolder } from "../components/placeh
 import { ErrorIcon, NoProductIcon } from "../components/icons"
 import { useSearchParams } from 'next/navigation';
 
-export default function Home() {
+function CatalogContent() {
   const searchParams = useSearchParams();
   
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
@@ -134,5 +134,13 @@ export default function Home() {
         </div>
       </div>
     </Container>
+  )
+}
+
+export default function CatalogPage() {
+  return (
+    <Suspense fallback={<ProductPlaceHolder />}>
+      <CatalogContent />
+    </Suspense>
   )
 }
