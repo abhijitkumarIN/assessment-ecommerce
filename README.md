@@ -1,3 +1,12 @@
+## To run it in production in local system  , please follow the below step 
+1. clone or download the repo
+2. install the node version 22x
+3. npm run build
+4. npm start
+
+Now project will run in production let us know in case of any query `abhijeetkumarlucknow@gmail.com`
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
